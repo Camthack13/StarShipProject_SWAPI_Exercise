@@ -6,7 +6,7 @@
 <h2>Random Starship</h2>
 @if (Model.RandomStarship != null)
 {
-    <div class="card mb-4">
+    <div class="mb-4">
         <div class="card-body">
             <h5 class="card-title">@Model.RandomStarship.Name</h5>
             <p class="card-text">Model: @Model.RandomStarship.Model</p>
@@ -31,10 +31,22 @@ else
 
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Model</th>
-            <th>Class</th>
+          <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortColumn="Name" asp-route-sortOrder="@(ViewData["SortOrder_Name"] as string == "asc" ? "desc" : "asc")">
+                    Name
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortColumn="Model" asp-route-sortOrder="@(ViewData["SortOrder_Model"] as string == "asc" ? "desc" : "asc")">
+                    Model
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortColumn="Class" asp-route-sortOrder="@(ViewData["SortOrder_Class"] as string == "asc" ? "desc" : "asc")">
+                    Class
+                </a>
+            </th>
             <th>Actions</th>
         </tr>
     </thead>

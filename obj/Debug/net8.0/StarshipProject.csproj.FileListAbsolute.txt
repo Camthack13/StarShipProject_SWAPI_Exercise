@@ -140,3 +140,4 @@ C:\DotNetProjects\StarshipProject\bin\Debug\net8.0\runtimes\win\lib\net6.0\Syste
 C:\DotNetProjects\StarshipProject\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\DotNetProjects\StarshipProject\obj\Debug\net8.0\StarshipProject.csproj.AssemblyReference.cache
 C:\DotNetProjects\StarshipProject\obj\Debug\net8.0\Starship.AC0D8FCF.Up2Date
+C:\DotNetProjects\StarshipProject\obj\Debug\net8.0\StarshipProject.sourcelink.json
