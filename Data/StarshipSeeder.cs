@@ -32,11 +32,7 @@ public class StarshipSeeder(StarshipContext context, HttpClient httpClient)
         
             var json = await response.Content.ReadAsStringAsync();
 
-            // Console.WriteLine("API Response JSON: " + json);  // Print raw JSON to inspect
-
             var data = JsonSerializer.Deserialize<StarshipResponse>(json);
-
-            //Console.WriteLine("Data.next =" + data.Next);  // Print raw JSON to inspect
 
             // Check if data or data.Results is null
             if (data == null || data.Results == null)
