@@ -15,10 +15,10 @@ Configure the Database connection
 update the connection strings to match your local database
 
 Run the Database Migrations
-"dotnet ef database update"
+_ "dotnet ef database update"
 
 Run the application
-"dotnet run"
+_ "dotnet run"
 
 Access the application
 - Follow the link "http://localhost:5036"
