@@ -1,8 +1,5 @@
-using System.Net.Http;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using StarshipProject; // Replace with actual namespace
 using System.Text.Json.Serialization;
 using StarshipProject.Models;
 

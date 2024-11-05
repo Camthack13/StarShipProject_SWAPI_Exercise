@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StarshipProject;
 using StarshipProject.Models;
-using System.Threading.Tasks;
 
 public class StarshipsController : Controller
 {
