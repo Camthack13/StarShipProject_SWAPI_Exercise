@@ -1,0 +1,27 @@
+@model StarshipProject.Models.Starship
+
+@{
+    ViewData["Title"] = "Starship Details";
+}
+
+<h1>Starship Details</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text"><strong>Model:</strong> @Model.Model</p>
+        <p class="card-text"><strong>Manufacturer:</strong> @Model.Manufacturer</p>
+        <p class="card-text"><strong>Class:</strong> @Model.StarshipClass</p>
+        <p class="card-text"><strong>Cost in Credits:</strong> @Model.CostInCredits</p>
+        <p class="card-text"><strong>Length:</strong> @Model.Length</p>
+        <p class="card-text"><strong>Max Atmosphering Speed:</strong> @Model.MaxAtmospheringSpeed</p>
+        <p class="card-text"><strong>Crew:</strong> @Model.Crew</p>
+        <p class="card-text"><strong>Passengers:</strong> @Model.Passengers</p>
+        <p class="card-text"><strong>Cargo Capacity:</strong> @Model.CargoCapacity</p>
+        <p class="card-text"><strong>Consumables:</strong> @Model.Consumables</p>
+        <p class="card-text"><strong>Hyperdrive Rating:</strong> @Model.HyperdriveRating</p>
+        <p class="card-text"><strong>MGLT:</strong> @Model.MGLT</p>
+    </div>
+</div>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to List</a>

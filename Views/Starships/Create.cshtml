@@ -1,0 +1,95 @@
+@model StarshipProject.Models.Starship
+
+@{
+    ViewData["Title"] = "Create New Starship";
+}
+
+<h1>Create Starship</h1>
+
+<div class="container pb-5">
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Model" class="control-label">Model</label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Manufacturer" class="control-label">Manufacturer</label>
+        <input asp-for="Manufacturer" class="form-control" />
+        <span asp-validation-for="Manufacturer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StarshipClass" class="control-label">Class</label>
+        <input asp-for="StarshipClass" class="form-control" />
+        <span asp-validation-for="StarshipClass" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CostInCredits" class="control-label">Cost in Credits</label>
+        <input asp-for="CostInCredits" class="form-control" />
+        <span asp-validation-for="CostInCredits" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Length" class="control-label">Length</label>
+        <input asp-for="Length" class="form-control" />
+        <span asp-validation-for="Length" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MaxAtmospheringSpeed" class="control-label">Max Atmosphering Speed</label>
+        <input asp-for="MaxAtmospheringSpeed" class="form-control" />
+        <span asp-validation-for="MaxAtmospheringSpeed" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Crew" class="control-label">Crew</label>
+        <input asp-for="Crew" class="form-control" />
+        <span asp-validation-for="Crew" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Passengers" class="control-label">Passengers</label>
+        <input asp-for="Passengers" class="form-control" />
+        <span asp-validation-for="Passengers" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CargoCapacity" class="control-label">Cargo Capacity</label>
+        <input asp-for="CargoCapacity" class="form-control" />
+        <span asp-validation-for="CargoCapacity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Consumables" class="control-label">Consumables</label>
+        <input asp-for="Consumables" class="form-control" />
+        <span asp-validation-for="Consumables" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HyperdriveRating" class="control-label">Hyperdrive Rating</label>
+        <input asp-for="HyperdriveRating" class="form-control" />
+        <span asp-validation-for="HyperdriveRating" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MGLT" class="control-label">MGLT</label>
+        <input asp-for="MGLT" class="form-control" />
+        <span asp-validation-for="MGLT" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+</form>
+</div>
