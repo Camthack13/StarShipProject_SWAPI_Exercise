@@ -10,8 +10,4 @@ public class StarshipContext : DbContext
 
     public DbSet<Starship> Starships { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-    } 
 }
