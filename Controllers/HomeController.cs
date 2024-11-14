@@ -21,9 +21,9 @@ namespace StarshipProject.Controllers
             ViewData["SortOrder_Name"] = sortColumn == "Name" ? sortOrder : "asc";
             ViewData["SortOrder_Model"] = sortColumn == "Model" ? sortOrder : "asc";
             ViewData["SortOrder_Class"] = sortColumn == "Class" ? sortOrder : "asc";
-            var Randstarships = await _context.Starships.ToListAsync();
-
-            // Get all starships from the database
+            
+          
+            // Get all starships from the database for all starships list as queryable for sorting
             var starships = _context.Starships.AsQueryable();
 
             // Apply sorting based on the sortColumn and sortOrder
@@ -35,17 +35,20 @@ namespace StarshipProject.Controllers
                 _ => starships.OrderBy(s => s.Name) // Default to Name if no sort column specified
             };
 
-            // Fetch the sorted data
+            // Saving the sorted data as a regular list of starships
             var starshipsList = await starships.ToListAsync();
+
+            //get list of starships to pick random
+            var starshipListForRand = await _context.Starships.ToListAsync();
 
             Starship? randomStarship = null;
 
-            if (Randstarships.Any())
+            if (starshipListForRand.Any())
             {
                 if (refreshRandom || HttpContext.Session.Get<Starship>("RandomStarship") == null)
                 {
                     var random = new Random();
-                    randomStarship = Randstarships[random.Next(Randstarships.Count)];
+                    randomStarship = starshipListForRand[random.Next(starshipListForRand.Count)];
                     HttpContext.Session.Set("RandomStarship", randomStarship); // Save random starship in session
                 }
                 else

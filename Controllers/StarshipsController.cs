@@ -17,17 +17,6 @@ public class StarshipsController : Controller
         return View(starships);
     }
 
-    public async Task<IActionResult> Random()
-    {
-        var starships = await _context.Starships.ToListAsync();
-        if (starships.Count == 0) return RedirectToAction("Index");
-
-        var random = new Random();
-        var randomStarship = starships[random.Next(starships.Count)];
-
-        return View(randomStarship);
-    }
-
     [HttpGet]
     public IActionResult Create()
     {
