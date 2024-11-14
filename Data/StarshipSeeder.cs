@@ -48,10 +48,12 @@ public class StarshipSeeder(StarshipContext context, HttpClient httpClient)
                 Model = s.Model,
                 Manufacturer = s.Manufacturer,
                 StarshipClass = s.StarshipClass,
-                CostInCredits = s.CostInCredits,
+                // Handle non-numeric CostInCredits
+                CostInCredits = long.TryParse(s.CostInCredits, out var cost) ? cost : null,
                 Length = s.Length,
                 MaxAtmospheringSpeed = s.MaxAtmospheringSpeed,
-                Crew = s.Crew,
+                // Remove commas in Crew and handle non-numeric values
+                Crew = int.TryParse(s.Crew?.Replace(",", ""), out var crew) ? crew : null,
                 Passengers = s.Passengers,
                 CargoCapacity = s.CargoCapacity,
                 Consumables = s.Consumables,
@@ -70,53 +72,53 @@ public class StarshipSeeder(StarshipContext context, HttpClient httpClient)
     }
 
     private class StarshipResponse
-{
-    [JsonPropertyName("results")]
-    public List<StarshipDto>? Results { get; set; }
+    {
+        [JsonPropertyName("results")]
+        public List<StarshipDto>? Results { get; set; }
 
-    [JsonPropertyName("next")]
-    public string? Next { get; set; }
-}
+        [JsonPropertyName("next")]
+        public string? Next { get; set; }
+    }
 
-private class StarshipDto
-{
-    [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    private class StarshipDto
+    {
+        [JsonPropertyName("name")]
+        public string? Name { get; set; }
 
-    [JsonPropertyName("model")]
-    public string? Model { get; set; }
+        [JsonPropertyName("model")]
+        public string? Model { get; set; }
 
-    [JsonPropertyName("manufacturer")]
-    public string? Manufacturer { get; set; }
+        [JsonPropertyName("manufacturer")]
+        public string? Manufacturer { get; set; }
 
-    [JsonPropertyName("cost_in_credits")]
-    public long? CostInCredits { get; set; }
+        [JsonPropertyName("cost_in_credits")]
+        public string? CostInCredits { get; set; }
 
-    [JsonPropertyName("length")]
-    public string? Length { get; set; }
+        [JsonPropertyName("length")]
+        public string? Length { get; set; }
 
-    [JsonPropertyName("max_atmosphering_speed")]
-    public string? MaxAtmospheringSpeed { get; set; }
+        [JsonPropertyName("max_atmosphering_speed")]
+        public string? MaxAtmospheringSpeed { get; set; }
 
-    [JsonPropertyName("crew")]
-    public string? Crew { get; set; }
+        [JsonPropertyName("crew")]
+        public string? Crew { get; set; }
 
-    [JsonPropertyName("passengers")]
-    public string? Passengers { get; set; }
+        [JsonPropertyName("passengers")]
+        public string? Passengers { get; set; }
 
-    [JsonPropertyName("cargo_capacity")]
-    public string? CargoCapacity { get; set; }
+        [JsonPropertyName("cargo_capacity")]
+        public string? CargoCapacity { get; set; }
 
-    [JsonPropertyName("consumables")]
-    public string? Consumables { get; set; }
+        [JsonPropertyName("consumables")]
+        public string? Consumables { get; set; }
 
-    [JsonPropertyName("hyperdrive_rating")]
-    public string? HyperdriveRating { get; set; }
+        [JsonPropertyName("hyperdrive_rating")]
+        public string? HyperdriveRating { get; set; }
 
-    [JsonPropertyName("MGLT")]
-    public string? MGLT { get; set; }
+        [JsonPropertyName("MGLT")]
+        public string? MGLT { get; set; }
 
-    [JsonPropertyName("starship_class")]
-    public string? StarshipClass { get; set; }
-}
+        [JsonPropertyName("starship_class")]
+        public string? StarshipClass { get; set; }
+    }
 }

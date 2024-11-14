@@ -1,75 +1,78 @@
 ﻿@model StarshipProject.Models.HomePageViewModel
 <div class="container pb-5">
-<h1>Starship Project</h1>
+    <h1>Starship Project</h1>
 
-<!-- Random Starship Display -->
-<h2>Random Starship</h2>
-@if (Model.RandomStarship != null)
-{
-    <div class="mb-4">
-        <div class="card-body">
-            <h5 class="card-title">@Model.RandomStarship.Name</h5>
-            <p class="card-text">Model: @Model.RandomStarship.Model</p>
-            <p class="card-text">Class: @Model.RandomStarship.StarshipClass</p>
-            <p class="card-text">Manufacturer: @Model.RandomStarship.Manufacturer</p>
+    <!-- Random Starship Display -->
+    <h2>Random Starship</h2>
+    @if (Model.RandomStarship != null)
+    {
+        <div class="mb-4">
+            <div class="card-body">
+                <h5 class="card-title">@Model.RandomStarship.Name</h5>
+                <p class="card-text">Model: @Model.RandomStarship.Model</p>
+                <p class="card-text">Class: @Model.RandomStarship.StarshipClass</p>
+                <p class="card-text">Manufacturer: @Model.RandomStarship.Manufacturer</p>
 
-              <!-- "Next Random" and "View Details" Buttons -->
-            <a asp-controller="Home" asp-action="Index" asp-route-refreshRandom="true" class="btn btn-primary">Next Random</a>
-            <a asp-controller="Starships" asp-action="Details" asp-route-id="@Model.RandomStarship.Id" class="btn btn-secondary">View Details</a>
+                <!-- "Next Random" and "View Details" Buttons -->
+                <a asp-controller="Home" asp-action="Index" asp-route-refreshRandom="true" class="btn btn-primary">Next Random</a>
+                <a asp-controller="Starships" asp-action="Details" asp-route-id="@Model.RandomStarship.Id" class="btn btn-secondary">View Details</a>
+            </div>
         </div>
-    </div>
-}
-else
-{
-    <p>No starships available.</p>
-}
+    }
+    else
+    {
+        <p>No starships available.</p>
+    }
 
-<!-- Starship Table -->
-<h2>All Starships</h2>
+    <!-- Starship Table -->
+    <h2>All Starships</h2>
 
-<a asp-controller="Starships" asp-action="Create" class="btn btn-success mb-3">Create New Starship</a>
+    <a asp-controller="Starships" asp-action="Create" class="btn mb-3">Create New Starship</a>
 
-<table class="table table-striped">
-    <thead>
-          <tr>
-            <th>
-                <a asp-action="Index" asp-route-sortColumn="Name" asp-route-sortOrder="@(ViewData["SortOrder_Name"] as string == "asc" ? "desc" : "asc")">
-                    Name
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortColumn="Model" asp-route-sortOrder="@(ViewData["SortOrder_Model"] as string == "asc" ? "desc" : "asc")">
-                    Model
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortColumn="Class" asp-route-sortOrder="@(ViewData["SortOrder_Class"] as string == "asc" ? "desc" : "asc")">
-                    Class
-                </a>
-            </th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var starship in Model.AllStarships)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@starship.Name</td>
-                <td>@starship.Model</td>
-                <td>@starship.StarshipClass</td>
-                <td>
-                    <a asp-controller="Starships" asp-action="Details" asp-route-id="@starship.Id" class="btn btn-primary">View</a>
-                    <a asp-controller="Starships" asp-action="Edit" asp-route-id="@starship.Id" class="btn btn-warning">Edit</a>
-                    <!-- Delete Button Form -->
-                    <form asp-controller="Starships" asp-action="DeleteConfirmed" asp-route-id="@starship.Id" method="post" style="display:inline;">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this starship?');">
-                            Delete
-                        </button>
-                    </form>
-                </td>
+                <th>
+                    <a asp-action="Index" asp-route-sortColumn="Name" 
+                     asp-route-sortOrder="@(ViewData["SortOrder_Name"] as string == "asc" ? "desc" : "asc")">
+                        Name
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortColumn="Model" 
+                     asp-route-sortOrder="@(ViewData["SortOrder_Model"] as string == "asc" ? "desc" : "asc")">
+                        Model
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortColumn="Class" 
+                     asp-route-sortOrder="@(ViewData["SortOrder_Class"] as string == "asc" ? "desc" : "asc")">
+                        Class
+                    </a>
+                </th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var starship in Model.AllStarships)
+            {
+                <tr>
+                    <td>@starship.Name</td>
+                    <td>@starship.Model</td>
+                    <td>@starship.StarshipClass</td>
+                    <td>
+                        <a asp-controller="Starships" asp-action="Details" asp-route-id="@starship.Id" class="btn btn-primary">View</a>
+                        <a asp-controller="Starships" asp-action="Edit" asp-route-id="@starship.Id" class="btn btn-warning">Edit</a>
+                        <!-- Delete Button Form -->
+                        <form asp-controller="Starships" asp-action="DeleteConfirmed" asp-route-id="@starship.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this starship?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

@@ -70,28 +70,28 @@ public class StarshipsController : Controller
         return View(starship);
     }
 
-   [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> DeleteConfirmed(int id)
-{
-    var starship = await _context.Starships.FindAsync(id);
-    if (starship != null)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        _context.Starships.Remove(starship);
-        await _context.SaveChangesAsync();
+        var starship = await _context.Starships.FindAsync(id);
+        if (starship != null)
+        {
+            _context.Starships.Remove(starship);
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction("Index", "Home"); // Redirects to the homepage
     }
-    return RedirectToAction("Index", "Home"); // Redirects to the homepage
-}
 
-public async Task<IActionResult> Details(int id)
-{
-    var starship = await _context.Starships.FindAsync(id);
-    if (starship == null)
+    public async Task<IActionResult> Details(int id)
     {
-        return NotFound();
+        var starship = await _context.Starships.FindAsync(id);
+        if (starship == null)
+        {
+            return NotFound();
+        }
+        return View(starship);
     }
-    return View(starship);
-}
 
 
 }

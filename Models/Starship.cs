@@ -9,7 +9,7 @@ public class Starship
     public long? CostInCredits { get; set; }
     public string? Length { get; set; }
     public string? MaxAtmospheringSpeed { get; set; }
-    public string? Crew { get; set; }
+    public int? Crew { get; set; }
     public string? Passengers { get; set; }
     public string? CargoCapacity { get; set; }
     public string? Consumables { get; set; }
