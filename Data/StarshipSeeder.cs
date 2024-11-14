@@ -90,7 +90,7 @@ private class StarshipDto
     public string? Manufacturer { get; set; }
 
     [JsonPropertyName("cost_in_credits")]
-    public int? CostInCredits { get; set; }
+    public long? CostInCredits { get; set; }
 
     [JsonPropertyName("length")]
     public string? Length { get; set; }
