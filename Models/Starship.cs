@@ -6,7 +6,7 @@ public class Starship
     public string? Model { get; set; }
     public string? Manufacturer { get; set; }
     public string? StarshipClass { get; set; }
-    public string? CostInCredits { get; set; }
+    public int? CostInCredits { get; set; }
     public string? Length { get; set; }
     public string? MaxAtmospheringSpeed { get; set; }
     public string? Crew { get; set; }
